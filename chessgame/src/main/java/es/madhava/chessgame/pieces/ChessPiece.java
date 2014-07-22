@@ -15,5 +15,5 @@ import es.madhava.chessgame.GameConfig;
 public interface ChessPiece extends Comparable{
     Character getType();
     boolean isEmpty();
-    public boolean checkPosition(ChessPiece[] c, GameConfig conf, int line, int column);
+    public boolean checkPosition(ChessPiece[][] board, int column, int row);
 }

@@ -24,7 +24,7 @@ public class Blank extends ChessPieceAbstract {
         return true;
     }
 
-    public boolean checkPosition(ChessPiece[] c, GameConfig conf, int line, int column) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkPosition(ChessPiece[][] board, int line, int column) {
+      return true;
     }
 }

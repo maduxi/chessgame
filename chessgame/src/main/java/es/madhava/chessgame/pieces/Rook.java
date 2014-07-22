@@ -19,7 +19,7 @@ public class Rook extends ChessPieceAbstract {
         return type;
     }
 
-    public boolean checkPosition(ChessPiece[] c, GameConfig conf, int line, int column) {
+    public boolean checkPosition(ChessPiece[][] board, int line, int column) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

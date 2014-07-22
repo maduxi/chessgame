@@ -29,7 +29,7 @@ public class GameConfig {
     private final int bishops;
     private final int rooks;
     private final int knights;
-    private final List<ChessPiece> pieces;
+    private final ArrayList<ChessPiece> pieces;
 
     public GameConfig(String[] args) throws ArrayIndexOutOfBoundsException, NumberFormatException, TooManyPiecesException {
 
@@ -71,7 +71,7 @@ public class GameConfig {
         }
     }
 
-    public List<ChessPiece> getPieces() {
+    public ArrayList<ChessPiece> getPieces() {
         return pieces;
     }
     
