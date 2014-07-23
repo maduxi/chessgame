@@ -7,6 +7,8 @@ package es.madhava.chessgame;
 
 import es.madhava.chessgame.pieces.ChessPiece;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,29 +20,41 @@ public class CalculateOptions {
 
     static List<ArrayList<ChessPiece>> getOptions(GameConfig conf) {
         List<ArrayList<ChessPiece>> result = new ArrayList<ArrayList<ChessPiece>>();
-
-        Set<ArrayList<ChessPiece>> permutations = PermutationsExpert.getPermutations(conf.getPieces());
-
-        for (ArrayList<ChessPiece> c : permutations) {
-            if (validate(c, conf)) {
-                result.add(c);
-            }
-        }
+        Set<Integer> toDefend = new HashSet<Integer>();
+        Set<Integer> underAttack = new HashSet<Integer>();
+        result.addAll(tryOptions(new ArrayList<ChessPiece>(), conf.getPieces(), toDefend, underAttack, conf.getColumns(), conf.getRows()));
         return result;
     }
 
-    private static boolean validate(ArrayList<ChessPiece> c, GameConfig conf) {
-        int column;
-        int row;
-        boolean result = true;
-        int columns = conf.getColumns();
-        ChessPiece[][] board = getBoardFromList(c, columns, conf.getRows());
-        for (int i = 0; i < c.size(); i++) {
-            row = (int) (i / columns);
-            column = i % columns;
-            c.get(i).checkPosition(board, column, row);
+    protected static Set<ArrayList<ChessPiece>> tryOptions(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack, int columns, int rows) {
+        Set<ArrayList<ChessPiece>> result = new HashSet<ArrayList<ChessPiece>>();
+        if (full.isEmpty()) {
+            result.add(fill);
+        } else {
+            ArrayList<ChessPiece> tmpFull;
+            ArrayList<ChessPiece> tmpFill;
+            Set<Integer> uAttack;
+            ChessPiece piece;
+            for (int i = 0; i < full.size(); i++) {
+                tmpFull = (ArrayList) full.clone();
+                piece = tmpFull.remove(i);
+                tmpFill = (ArrayList) fill.clone();
+                if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
+                    uAttack = piece.getUnderAttack(columns, rows,tmpFill.size());
+                    if (!Collections.disjoint(uAttack, toDefend)) {
+                        Set<Integer> tDef = new HashSet<Integer>();
+                        tDef.addAll(toDefend);
+                        if (!piece.isEmpty()) {
+                            tDef.add(tmpFill.size());
+                        }
+                        
+                        uAttack.addAll(underAttack);
+                        tmpFill.add(piece);
+                        result.addAll(tryOptions(tmpFill, tmpFull, tDef, uAttack, columns, rows));
+                    }
+                }
+            }
         }
-
         return result;
     }
 

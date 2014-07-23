@@ -6,7 +6,7 @@
 
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
+import java.util.Set;
 
 /**
  *
@@ -15,5 +15,5 @@ import es.madhava.chessgame.GameConfig;
 public interface ChessPiece extends Comparable{
     Character getType();
     boolean isEmpty();
-    public boolean checkPosition(ChessPiece[][] board, int column, int row);
+    public Set<Integer> getUnderAttack(int columns, int rows, int position);
 }

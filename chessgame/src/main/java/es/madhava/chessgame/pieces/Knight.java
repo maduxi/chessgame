@@ -5,7 +5,7 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,7 +19,9 @@ public class Knight extends ChessPieceAbstract {
         return type;
     }
 
-    public boolean checkPosition(ChessPiece[][] board, int line, int column) {
+
+
+    public boolean insertable(ArrayList<ChessPiece> tmpFill, int columns) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

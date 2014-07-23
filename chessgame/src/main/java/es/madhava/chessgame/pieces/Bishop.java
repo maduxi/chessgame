@@ -5,7 +5,10 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -19,56 +22,66 @@ public class Bishop extends ChessPieceAbstract {
         return type;
     }
 
-    public boolean checkPosition(ChessPiece[][] board, int column, int row) {
-        boolean result = true;
-
-        //We have to check 4 diagonals
-        //positive,positive
-        result = checkTopRight(column, row, board);
-
-        if (result) {
-            result = checkTopLeft(column, row, board);
-        }
-        if (result) {
-            result = checkBottomRight(column, row, board);
-        }
-        if (result) {
-            result = checkBottomLeft(column, row, board);
-        }
-
-        return result;
+    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+        Set<Integer> pos = new HashSet<Integer>();
+        
+        pos.addAll(getTopRightDiagonalPositionsToCheck(columns, position));
+        pos.addAll(getTopLeftDiagonalPositionsToCheck(columns, position));
+        return pos;
     }
 
-    protected boolean checkDiagonal(int column, int row, ChessPiece[][] board, int incCol, int incRow) {
-        int i = row;
-        int j = column;
-        boolean result = true;
-        do {
-            i += incRow;
-            j += incCol;
-            if (j <= board.length || i <= board[j].length || i < 0 || j < 0) {
+    protected Set<Integer> getTopRightDiagonalPositionsToCheck(int columns, int position) {
+        int myCol = position % columns;
+        Set<Integer> pos = new HashSet<Integer>();
+        int rightAmount = (columns - 1);
+        int at;
+        int loops = columns - myCol;
+        for (int i = 1; i <= loops; i++) {
+            at = position - ((i) * rightAmount);
+            if (at > 0) {
+                pos.add(at);
+            } else {
                 break;
-            }else if(board[i][j].isEmpty()){
-                result = false;
             }
-        } while (result);
-        return result;
+        }
+        return pos;
     }
 
-    protected boolean checkTopRight(int column, int row, ChessPiece[][] board) {
-        return checkDiagonal(column, row, board, 1, 1);
+    protected Set<Integer> getTopLeftDiagonalPositionsToCheck(int columns, int position) {
+        int myCol = position % columns;
+        Set<Integer> pos = new HashSet<Integer>();
+        int rightAmount = (columns + 1);
+        int at;
+        int loops = myCol-1;
+        for (int i = 1; i <= loops; i++) {
+            at = position - ((i) * rightAmount);
+            if (at > 0) {
+                pos.add(at);
+            } else {
+                break;
+            }
+        }
+        return pos;
     }
 
-    protected boolean checkTopLeft(int column, int row, ChessPiece[][] board) {
-        return checkDiagonal(column, row, board, -1, 1);
-    }
-
-    protected boolean checkBottomRight(int column, int row, ChessPiece[][] board) {
-        return checkDiagonal(column, row, board, 1, -1);
-    }
-
-    protected boolean checkBottomLeft(int column, int row, ChessPiece[][] board) {
-        return checkDiagonal(column, row, board, -1, -1);
-    }
+//    protected List<Integer> getBottomRightDiagonalPositionsToCheck(int columns, int size) {
+//        int myCol = position % columns;
+//        ArrayList<Integer> pos = new ArrayList<Integer>();
+//        int rightAmount = ((columns + 1));
+//        for (int i = myCol; i < columns; i++) {
+//            pos.add(size + (i * rightAmount));
+//        }
+//        return pos;
+//    }
+//
+//    protected List<Integer> getBottomLeftDiagonalPositionsToCheck(int columns, int size, int myCol) {
+//        ArrayList<Integer> pos = new ArrayList<Integer>();
+//        //check left positions
+//        int leftAmount = ((columns + 1));
+//        for (int i = myCol; i > 0; i--) {
+//            pos.add(size - (i * leftAmount));
+//        }
+//        return pos;
+//    }
 
 }
