@@ -26,7 +26,7 @@ public class Blank extends ChessPieceAbstract {
         return true;
     }
 
-    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+    public Set<Integer> getAttackSquares(int columns, int rows, int position) {
        return new HashSet<Integer>();
     }
 

@@ -45,7 +45,7 @@ public class KnightTest {
         expResult.add(22);
         expResult.add(25);
         expResult.add(27);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -59,7 +59,7 @@ public class KnightTest {
         Set<Integer> expResult = new HashSet<Integer>();
         expResult.add(9);
         expResult.add(16);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -74,7 +74,7 @@ public class KnightTest {
         expResult.add(21);
         expResult.add(16);
         expResult.add(33);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -90,7 +90,7 @@ public class KnightTest {
         expResult.add(21);
         expResult.add(24);
         expResult.add(28);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -104,7 +104,7 @@ public class KnightTest {
         Set<Integer> expResult = new HashSet<Integer>();
         expResult.add(8);
         expResult.add(13);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -122,7 +122,7 @@ public class KnightTest {
         expResult.add(23);
         expResult.add(35);
         expResult.add(31);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     

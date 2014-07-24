@@ -15,5 +15,5 @@ import java.util.Set;
 public interface ChessPiece extends Comparable{
     Character getType();
     boolean isEmpty();
-    public Set<Integer> getUnderAttack(int columns, int rows, int position);
+    public Set<Integer> getAttackSquares(int columns, int rows, int position);
 }

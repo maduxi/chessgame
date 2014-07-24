@@ -43,7 +43,7 @@ public class BishopTest {
         expResult.add(20);
         expResult.add(27);
         expResult.add(34);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
 }

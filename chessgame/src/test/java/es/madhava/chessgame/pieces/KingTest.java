@@ -45,7 +45,7 @@ public class KingTest {
         expResult.add(12);
         expResult.add(13);
         expResult.add(14);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -65,7 +65,7 @@ public class KingTest {
         expResult.add(15);
         expResult.add(16);
         expResult.add(17);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -85,7 +85,7 @@ public class KingTest {
         expResult.add(32);
         expResult.add(33);
         expResult.add(34);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -100,7 +100,7 @@ public class KingTest {
         expResult.add(28);
         expResult.add(29);
         expResult.add(34);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -117,7 +117,7 @@ public class KingTest {
         expResult.add(16);
         expResult.add(20);
         expResult.add(22);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -133,7 +133,7 @@ public class KingTest {
         expResult.add(4);
         expResult.add(10);
         expResult.add(11);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
     
@@ -148,7 +148,7 @@ public class KingTest {
         expResult.add(24);
         expResult.add(25);
         expResult.add(31);
-        Set<Integer> result = instance.getUnderAttack(columns, rows, position);
+        Set<Integer> result = instance.getAttackSquares(columns, rows, position);
         assertEquals(expResult, result);
     }
 }

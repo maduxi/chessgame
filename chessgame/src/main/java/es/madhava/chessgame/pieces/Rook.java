@@ -7,6 +7,7 @@ package es.madhava.chessgame.pieces;
 
 import es.madhava.chessgame.GameConfig;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -21,8 +22,11 @@ public class Rook extends ChessPieceAbstract {
         return type;
     }
 
-    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Set<Integer> getAttackSquares(int columns, int rows, int position) {
+        Set<Integer> result = new HashSet<Integer>();
+        result.addAll(getRow(columns, rows, position));
+        result.addAll(getColumn(columns, rows, position));
+        return result;
     }
 
 }

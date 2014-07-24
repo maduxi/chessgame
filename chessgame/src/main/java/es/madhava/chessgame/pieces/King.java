@@ -20,7 +20,7 @@ public class King extends ChessPieceAbstract {
         return type;
     }
 
-    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+    public Set<Integer> getAttackSquares(int columns, int rows, int position) {
         HashSet<Integer> result = new HashSet<Integer>();
 
         int col = position % columns;

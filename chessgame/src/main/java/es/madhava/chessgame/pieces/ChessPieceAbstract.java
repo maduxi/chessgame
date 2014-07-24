@@ -5,6 +5,8 @@
  */
 package es.madhava.chessgame.pieces;
 
+import es.madhava.chessgame.CalculateOptions;
+import es.madhava.chessgame.Point;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,7 +48,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return seed * this.getType().hashCode(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    protected Set<Integer> getTopRightDiagonalPositions(int columns, int position) {
+    protected static Set<Integer> getTopRightDiagonalPositions(int columns, int position) {
         int myCol = position % columns;
         int loops = columns - myCol -1;
         int rightAmount = -(columns - 1);
@@ -54,7 +56,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
 
-    protected Set<Integer> getTopLeftDiagonalPositions(int columns, int position) {
+    protected static Set<Integer> getTopLeftDiagonalPositions(int columns, int position) {
         int myCol = position % columns;
         int loops = myCol;
         int rightAmount = -(columns + 1);
@@ -62,7 +64,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
 
-    protected Set<Integer> getBottomRightDiagonalPositions(int columns, int position, int size) {
+    protected static Set<Integer> getBottomRightDiagonalPositions(int columns, int position, int size) {
         int myCol = position % columns;
         int loops = columns - myCol;
         int rightAmount = (columns + 1);
@@ -70,7 +72,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
 
-    protected Set<Integer> getBottomLeftDiagonalPositions(int columns, int position, int size) {
+    protected static Set<Integer> getBottomLeftDiagonalPositions(int columns, int position, int size) {
         int myCol = position % columns;
         int loops = myCol;
         int rightAmount = (columns - 1);
@@ -78,7 +80,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
 
-    protected Set<Integer> loopDiagonalDown(int loops, int position, int rightAmount, int size) {
+    protected static Set<Integer> loopDiagonalDown(int loops, int position, int rightAmount, int size) {
         Set<Integer> pos = new HashSet<Integer>();
         int at;
         for (int i = 1; i <= loops; i++) {
@@ -92,7 +94,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
 
-    protected Set<Integer> loopDiagonalUp(int loops, int position, int rightAmount) {
+    protected static Set<Integer> loopDiagonalUp(int loops, int position, int rightAmount) {
         Set<Integer> pos = new HashSet<Integer>();
         int at;
         for (int i = 1; i <= loops; i++) {
@@ -106,6 +108,32 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         return pos;
     }
     
+    protected static Set<Integer> getRow(int columns, int rows, int position) {
+        Set<Integer> result = new HashSet<Integer>();
+        Point originalPoint = getPointFromPosition(position, columns, rows);
+        for(int i=0;i<columns;i++){
+            result.add(getPositionFromPoint(new Point(i, originalPoint.getRow()),columns,rows));
+        }
+        return result;
+    }
     
+        protected static Set<Integer> getColumn(int columns, int rows, int position) {
+        Set<Integer> result = new HashSet<Integer>();
+        Point originalPoint = getPointFromPosition(position, columns, rows);
+        for(int i=0;i<rows;i++){
+            result.add(getPositionFromPoint(new Point(originalPoint.getColumn(), i),columns,rows));
+        }
+        return result;
+    }
 
+    public static Point getPointFromPosition(int position, int columns, int rows) {
+        int col = position % columns;
+        int row = (position / columns);
+        return new Point(col, row);
+    }
+
+    public static int getPositionFromPoint(Point p, int columns, int rows) {
+        int rowValue = columns*p.getRow();
+        return rowValue+p.getColumn();
+    }
 }

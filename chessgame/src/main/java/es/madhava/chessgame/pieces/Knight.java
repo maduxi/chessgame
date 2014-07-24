@@ -22,10 +22,10 @@ public class Knight extends ChessPieceAbstract {
         return type;
     }
 
-    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+    public Set<Integer> getAttackSquares(int columns, int rows, int position) {
         Set<Integer> pos = new HashSet<Integer>();
 
-        Point p = CalculateOptions.getPointFromPosition(position, columns, rows);
+        Point p = getPointFromPosition(position, columns, rows);
 
         Set<Point> points = new HashSet<Point>();
 
@@ -47,7 +47,7 @@ public class Knight extends ChessPieceAbstract {
         
         for(Point pt : points){
             if(pt.getColumn()<columns && pt.getRow()<rows && pt.getColumn()>=0 && pt.getRow()>=0){
-                pos.add(CalculateOptions.getPositionFromPoint(pt, columns, rows));
+                pos.add(getPositionFromPoint(pt, columns, rows));
             }
         }
 

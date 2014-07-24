@@ -20,7 +20,7 @@ public class Bishop extends ChessPieceAbstract {
         return type;
     }
 
-    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+    public Set<Integer> getAttackSquares(int columns, int rows, int position) {
         Set<Integer> pos = new HashSet<Integer>();
         int size = columns * rows;
         pos.addAll(getTopRightDiagonalPositions(columns, position));

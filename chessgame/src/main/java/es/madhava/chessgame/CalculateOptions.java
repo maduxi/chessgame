@@ -40,8 +40,8 @@ public class CalculateOptions {
                 piece = tmpFull.remove(i);
                 tmpFill = (ArrayList) fill.clone();
                 if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
-                    uAttack = piece.getUnderAttack(columns, rows, tmpFill.size());
-                    if (!Collections.disjoint(uAttack, toDefend)) {
+                    uAttack = piece.getAttackSquares(columns, rows, tmpFill.size());
+                    if (Collections.disjoint(uAttack, toDefend)) {
                         Set<Integer> tDef = new HashSet<Integer>();
                         tDef.addAll(toDefend);
                         if (!piece.isEmpty()) {
@@ -79,16 +79,5 @@ public class CalculateOptions {
             System.out.println("");
         }
         System.out.println("");
-    }
-
-    public static Point getPointFromPosition(int position, int columns, int rows) {
-        int col = position % columns;
-        int row = (position / columns);
-        return new Point(col, row);
-    }
-
-    public static int getPositionFromPoint(Point p, int columns, int rows) {
-        int rowValue = columns*p.getRow();
-        return rowValue+p.getColumn();
     }
 }
