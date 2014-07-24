@@ -1,4 +1,4 @@
-ChessGame - Try Catch quest.
+ChessGame
 =========
 
 This program discovers how Chess pieces fit on a customizable board without threating each other.
@@ -16,3 +16,5 @@ For a harder problem, a 7×7 board with 2 Kings, 2 Queens, 2 Bishops and 1 Knigh
 ChessGame 7 7 2 2 2 0 1 
 
 That with reply you with more than 2 million boards, and may take a while to print.
+
+Development for trycatch.us 
