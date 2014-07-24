@@ -7,7 +7,7 @@ To run this program you will need to compile the sources and run it with the fol
 
 ChessGame {col} {rows} {kings} {queens} {bishops} {rooks} {knights} 
 
-For example for 3x3 board with 2 kings and 1 rook you would invoke it like this:
+For example for a 3x3 board with 2 kings and 1 rook you would invoke it like this:
 
 ChessGame 3 3 2 0 0 1 0 
 
