@@ -13,6 +13,10 @@ public class Point {
         this.column = column;
         this.row = row;
     }
+    public Point(int position, int columns, int rows) {
+        this.column = position % columns;
+        this.row = (position / columns);  
+    }
 
     public int getColumn() {
         return column;
@@ -61,6 +65,9 @@ public class Point {
         return "Point{" + "column=" + column + ", row=" + row + '}';
     }
 
-    
+    public static int getPositionFromPoint(Point p, int columns, int rows) {
+        int rowValue = columns*p.getRow();
+        return rowValue+p.getColumn();
+    }
     
 }

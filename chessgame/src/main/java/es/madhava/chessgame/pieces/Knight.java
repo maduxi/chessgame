@@ -19,7 +19,7 @@ public class Knight extends ChessPieceAbstract {
     public Set<Integer> getAttackSquares(int columns, int rows, int position) {
         Set<Integer> pos = new HashSet<Integer>();
 
-        Point p = getPointFromPosition(position, columns, rows);
+        Point p = new Point(position, columns, rows);
 
         Set<Point> points = new HashSet<Point>();
 
@@ -41,7 +41,7 @@ public class Knight extends ChessPieceAbstract {
         
         for(Point pt : points){
             if(pt.getColumn()<columns && pt.getRow()<rows && pt.getColumn()>=0 && pt.getRow()>=0){
-                pos.add(getPositionFromPoint(pt, columns, rows));
+                pos.add(Point.getPositionFromPoint(pt, columns, rows));
             }
         }
 

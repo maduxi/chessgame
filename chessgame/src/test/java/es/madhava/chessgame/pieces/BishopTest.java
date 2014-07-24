@@ -18,7 +18,7 @@ public class BishopTest {
     public void testGetType() {
         System.out.println("getType");
         Bishop instance = new Bishop();
-        Character expResult = 'i';
+        Character expResult = 'b';
         Character result = instance.getType();
         assertEquals(expResult, result);
     }

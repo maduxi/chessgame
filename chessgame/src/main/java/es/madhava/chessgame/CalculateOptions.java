@@ -22,7 +22,6 @@ public class CalculateOptions {
     }
 
     protected static Set<ArrayList<ChessPiece>> tryOptions(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack, int columns, int rows) {
-//        System.out.println("full: " + full.size() + " - fill: " + fill.size());
         Set<ArrayList<ChessPiece>> result = new HashSet<ArrayList<ChessPiece>>();
         if (full.isEmpty()) {
             result.add(fill);
@@ -31,11 +30,11 @@ public class CalculateOptions {
             ArrayList<ChessPiece> tmpFill;
             Set<Integer> uAttack;
             ChessPiece piece;
-            ChessPiece oldPiece=null;
+            ChessPiece oldPiece = null;
             for (int i = 0; i < full.size(); i++) {
                 tmpFull = (ArrayList) full.clone();
                 piece = tmpFull.remove(i);
-                if (oldPiece==null || !piece.equals(oldPiece)) {
+                if (oldPiece == null || !piece.equals(oldPiece)) {
                     tmpFill = (ArrayList) fill.clone();
                     if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
                         uAttack = piece.getAttackSquares(columns, rows, tmpFill.size());
@@ -50,33 +49,10 @@ public class CalculateOptions {
                             result.addAll(tryOptions(tmpFill, tmpFull, tDef, uAttack, columns, rows));
                         }
                     }
-                    oldPiece=piece;
+                    oldPiece = piece;
                 }
             }
         }
         return result;
-    }
-
-    public static ChessPiece[][] getBoardFromList(ArrayList<ChessPiece> pieces, int columns, int rows) {
-        ChessPiece[][] result = new ChessPiece[rows][columns];
-        int column;
-        int row;
-        for (int i = 0; i < pieces.size(); i++) {
-            row = (int) (i / columns);
-            column = i % columns;
-            result[row][column] = pieces.get(i);
-        }
-        return result;
-    }
-
-    protected static void printBoard(ChessPiece[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            System.out.print("|");
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j].getType() + "|");
-            }
-            System.out.println("");
-        }
-        System.out.println("");
     }
 }

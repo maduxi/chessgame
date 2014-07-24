@@ -20,7 +20,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
 
     @Override
     public String toString() {
-        return this.getType().toString(); //To change body of generated methods, choose Tools | Templates.
+        return this.getType().toString();
     }
 
     public boolean isEmpty() {
@@ -104,30 +104,19 @@ public abstract class ChessPieceAbstract implements ChessPiece {
     
     protected static Set<Integer> getRow(int columns, int rows, int position) {
         Set<Integer> result = new HashSet<Integer>();
-        Point originalPoint = getPointFromPosition(position, columns, rows);
+        Point originalPoint = new Point(position, columns, rows);
         for(int i=0;i<columns;i++){
-            result.add(getPositionFromPoint(new Point(i, originalPoint.getRow()),columns,rows));
+            result.add(Point.getPositionFromPoint(new Point(i, originalPoint.getRow()),columns,rows));
         }
         return result;
     }
     
         protected static Set<Integer> getColumn(int columns, int rows, int position) {
         Set<Integer> result = new HashSet<Integer>();
-        Point originalPoint = getPointFromPosition(position, columns, rows);
+        Point originalPoint = new Point(position, columns, rows);
         for(int i=0;i<rows;i++){
-            result.add(getPositionFromPoint(new Point(originalPoint.getColumn(), i),columns,rows));
+            result.add(Point.getPositionFromPoint(new Point(originalPoint.getColumn(), i),columns,rows));
         }
         return result;
-    }
-
-    public static Point getPointFromPosition(int position, int columns, int rows) {
-        int col = position % columns;
-        int row = (position / columns);
-        return new Point(col, row);
-    }
-
-    public static int getPositionFromPoint(Point p, int columns, int rows) {
-        int rowValue = columns*p.getRow();
-        return rowValue+p.getColumn();
     }
 }

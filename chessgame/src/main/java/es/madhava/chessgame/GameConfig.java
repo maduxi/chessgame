@@ -36,6 +36,7 @@ public class GameConfig {
         rooks = Integer.parseInt(args[5]);
         knights = Integer.parseInt(args[6]);
         pieces = new ArrayList<ChessPiece>();
+        
         createPieces();
     }
 

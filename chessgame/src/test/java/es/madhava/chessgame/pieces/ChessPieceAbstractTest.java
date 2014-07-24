@@ -319,7 +319,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(4, 4);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -330,7 +330,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 44;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -341,7 +341,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(0, 0);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -352,7 +352,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 0;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -363,7 +363,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(9, 9);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -374,7 +374,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 99;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -385,7 +385,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(9, 0);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -396,7 +396,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 9;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -407,7 +407,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(0, 9);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -418,7 +418,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 90;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -429,7 +429,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         Point expResult = new Point(9, 6);
-        Point result = ChessPieceAbstract.getPointFromPosition(position, columns, rows);
+        Point result = new Point(position, columns, rows);
         assertEquals(expResult, result);
     }
 
@@ -440,7 +440,7 @@ public class ChessPieceAbstractTest {
         int columns = 10;
         int rows = 10;
         int expResult = 69;
-        int result = ChessPieceAbstract.getPositionFromPoint(p, columns, rows);
+        int result = Point.getPositionFromPoint(p, columns, rows);
         assertEquals(expResult, result);
     }
 
