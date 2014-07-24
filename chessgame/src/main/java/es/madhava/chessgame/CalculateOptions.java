@@ -58,13 +58,13 @@ public class CalculateOptions {
     }
 
     public static ChessPiece[][] getBoardFromList(ArrayList<ChessPiece> pieces, int columns, int rows) {
-        ChessPiece[][] result = new ChessPiece[columns][rows];
+        ChessPiece[][] result = new ChessPiece[rows][columns];
         int column;
         int row;
         for (int i = 0; i < pieces.size(); i++) {
             row = (int) (i / columns);
             column = i % columns;
-            result[column][row] = pieces.get(i);
+            result[row][column] = pieces.get(i);
         }
         return result;
     }
