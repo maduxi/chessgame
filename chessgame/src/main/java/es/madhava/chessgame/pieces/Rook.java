@@ -5,8 +5,6 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

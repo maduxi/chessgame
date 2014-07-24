@@ -6,7 +6,6 @@
 package es.madhava.chessgame.pieces;
 
 import static es.madhava.chessgame.pieces.ChessPieceAbstract.getRow;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

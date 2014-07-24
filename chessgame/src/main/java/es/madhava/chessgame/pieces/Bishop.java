@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class Bishop extends ChessPieceAbstract {
 
-    private final Character type = 'i';
+    private final Character type = 'b';
 
     public Character getType() {
         return type;
