@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 
 /**
  * Java App to calculate chess possibilities on a board
- *
+ * Madhava Carrillo
+ * madhava.carrillo at gmail.com
  */
 public class ChessGame {
 
