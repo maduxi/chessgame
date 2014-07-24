@@ -12,6 +12,9 @@ import java.util.Set;
  * @author Madhava Carrillo <madhava.carrillo at gmail.com>
  */
 public class CalculateOptions {
+    
+    private static long log= 0;
+    private static long logMargin=5000;
 
     static List<ArrayList<ChessPiece>> getOptions(GameConfig conf) {
         List<ArrayList<ChessPiece>> result = new ArrayList<ArrayList<ChessPiece>>();
@@ -23,6 +26,7 @@ public class CalculateOptions {
 
     protected static Set<ArrayList<ChessPiece>> tryOptions(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack, int columns, int rows) {
         Set<ArrayList<ChessPiece>> result = new HashSet<ArrayList<ChessPiece>>();
+        updateStatus();
         if (full.isEmpty()) {
             result.add(fill);
         } else {
@@ -54,5 +58,12 @@ public class CalculateOptions {
             }
         }
         return result;
+    }
+
+    protected static void updateStatus() {
+        if(System.currentTimeMillis()-log>logMargin){
+            log=System.currentTimeMillis();
+            System.out.print(".");
+        }
     }
 }

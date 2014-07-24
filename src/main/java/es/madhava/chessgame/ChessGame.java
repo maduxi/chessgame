@@ -20,9 +20,9 @@ public class ChessGame {
 
             conf = new GameConfig(args);
             System.out.println(conf);
-
+            System.out.println("Calculating");
             List<ArrayList<ChessPiece>> options = CalculateOptions.getOptions(conf);
-            System.out.println("Options: " + options.size());
+            System.out.println("\nOptions: " + options.size());
             for (ArrayList<ChessPiece> board : options) {
                 printBoard(getBoardFromList(board, conf.getColumns(), conf.getRows()));
             }

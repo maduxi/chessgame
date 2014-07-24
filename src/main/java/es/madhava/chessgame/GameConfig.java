@@ -100,13 +100,13 @@ public class GameConfig {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Problem configured with values: ");
+        StringBuilder sb = new StringBuilder("Problem configuration:\n\n");
         sb.append("Board: ").append(columns).append(" x ").append(rows).append("\n");
-        sb.append("Kings: ").append(kings).append("\n");
-        sb.append("Queens: ").append(queens).append("\n");
-        sb.append("Bishops: ").append(bishops).append("\n");
-        sb.append("Rooks: ").append(rooks).append("\n");
-        sb.append("Knights: ").append(knights).append("\n");
+        sb.append("Kings (k): ").append(kings).append("\n");
+        sb.append("Queens (q): ").append(queens).append("\n");
+        sb.append("Bishops (b): ").append(bishops).append("\n");
+        sb.append("Rooks (r): ").append(rooks).append("\n");
+        sb.append("Knights (n): ").append(knights).append("\n");
         return sb.toString();
     }
 
