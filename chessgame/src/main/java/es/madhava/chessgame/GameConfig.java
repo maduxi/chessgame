@@ -14,7 +14,6 @@ import es.madhava.chessgame.pieces.Knight;
 import es.madhava.chessgame.pieces.Queen;
 import es.madhava.chessgame.pieces.Rook;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

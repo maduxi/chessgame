@@ -24,7 +24,7 @@ public class KnightTest {
     public void testGetType() {
         System.out.println("getType");
         Knight instance = new Knight();
-        Character expResult = 'h';
+        Character expResult = 'n';
         Character result = instance.getType();
         assertEquals(expResult, result);
     }

@@ -5,7 +5,6 @@
  */
 package es.madhava.chessgame.pieces;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +14,7 @@ import java.util.Set;
  */
 public class Blank extends ChessPieceAbstract {
 
-    private final Character type = 'b';
+    private final Character type = ' ';
 
     public Character getType() {
         return type;

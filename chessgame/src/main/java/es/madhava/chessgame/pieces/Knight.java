@@ -5,7 +5,6 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.CalculateOptions;
 import es.madhava.chessgame.Point;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +15,7 @@ import java.util.Set;
  */
 public class Knight extends ChessPieceAbstract {
 
-    private final Character type = 'h';
+    private final Character type = 'n';
 
     public Character getType() {
         return type;

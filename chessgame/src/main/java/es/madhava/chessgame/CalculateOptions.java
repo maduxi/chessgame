@@ -27,6 +27,7 @@ public class CalculateOptions {
     }
 
     protected static Set<ArrayList<ChessPiece>> tryOptions(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack, int columns, int rows) {
+//        System.out.println("full: " + full.size() + " - fill: " + fill.size());
         Set<ArrayList<ChessPiece>> result = new HashSet<ArrayList<ChessPiece>>();
         if (full.isEmpty()) {
             result.add(fill);
@@ -35,23 +36,26 @@ public class CalculateOptions {
             ArrayList<ChessPiece> tmpFill;
             Set<Integer> uAttack;
             ChessPiece piece;
+            ChessPiece oldPiece=null;
             for (int i = 0; i < full.size(); i++) {
                 tmpFull = (ArrayList) full.clone();
                 piece = tmpFull.remove(i);
-                tmpFill = (ArrayList) fill.clone();
-                if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
-                    uAttack = piece.getAttackSquares(columns, rows, tmpFill.size());
-                    if (Collections.disjoint(uAttack, toDefend)) {
-                        Set<Integer> tDef = new HashSet<Integer>();
-                        tDef.addAll(toDefend);
-                        if (!piece.isEmpty()) {
-                            tDef.add(tmpFill.size());
+                if (oldPiece==null || !piece.equals(oldPiece)) {
+                    tmpFill = (ArrayList) fill.clone();
+                    if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
+                        uAttack = piece.getAttackSquares(columns, rows, tmpFill.size());
+                        if (Collections.disjoint(uAttack, toDefend)) {
+                            Set<Integer> tDef = new HashSet<Integer>();
+                            tDef.addAll(toDefend);
+                            if (!piece.isEmpty()) {
+                                tDef.add(tmpFill.size());
+                            }
+                            uAttack.addAll(underAttack);
+                            tmpFill.add(piece);
+                            result.addAll(tryOptions(tmpFill, tmpFull, tDef, uAttack, columns, rows));
                         }
-
-                        uAttack.addAll(underAttack);
-                        tmpFill.add(piece);
-                        result.addAll(tryOptions(tmpFill, tmpFull, tDef, uAttack, columns, rows));
                     }
+                    oldPiece=piece;
                 }
             }
         }
