@@ -5,9 +5,7 @@
  */
 package es.madhava.chessgame.pieces;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,64 +22,11 @@ public class Bishop extends ChessPieceAbstract {
 
     public Set<Integer> getUnderAttack(int columns, int rows, int position) {
         Set<Integer> pos = new HashSet<Integer>();
-        
-        pos.addAll(getTopRightDiagonalPositionsToCheck(columns, position));
-        pos.addAll(getTopLeftDiagonalPositionsToCheck(columns, position));
+        int size = columns * rows;
+        pos.addAll(getTopRightDiagonalPositions(columns, position));
+        pos.addAll(getTopLeftDiagonalPositions(columns, position));
+        pos.addAll(getBottomRightDiagonalPositions(columns, position, size));
+        pos.addAll(getBottomLeftDiagonalPositions(columns, position, size));
         return pos;
     }
-
-    protected Set<Integer> getTopRightDiagonalPositionsToCheck(int columns, int position) {
-        int myCol = position % columns;
-        Set<Integer> pos = new HashSet<Integer>();
-        int rightAmount = (columns - 1);
-        int at;
-        int loops = columns - myCol;
-        for (int i = 1; i <= loops; i++) {
-            at = position - ((i) * rightAmount);
-            if (at > 0) {
-                pos.add(at);
-            } else {
-                break;
-            }
-        }
-        return pos;
-    }
-
-    protected Set<Integer> getTopLeftDiagonalPositionsToCheck(int columns, int position) {
-        int myCol = position % columns;
-        Set<Integer> pos = new HashSet<Integer>();
-        int rightAmount = (columns + 1);
-        int at;
-        int loops = myCol-1;
-        for (int i = 1; i <= loops; i++) {
-            at = position - ((i) * rightAmount);
-            if (at > 0) {
-                pos.add(at);
-            } else {
-                break;
-            }
-        }
-        return pos;
-    }
-
-//    protected List<Integer> getBottomRightDiagonalPositionsToCheck(int columns, int size) {
-//        int myCol = position % columns;
-//        ArrayList<Integer> pos = new ArrayList<Integer>();
-//        int rightAmount = ((columns + 1));
-//        for (int i = myCol; i < columns; i++) {
-//            pos.add(size + (i * rightAmount));
-//        }
-//        return pos;
-//    }
-//
-//    protected List<Integer> getBottomLeftDiagonalPositionsToCheck(int columns, int size, int myCol) {
-//        ArrayList<Integer> pos = new ArrayList<Integer>();
-//        //check left positions
-//        int leftAmount = ((columns + 1));
-//        for (int i = myCol; i > 0; i--) {
-//            pos.add(size - (i * leftAmount));
-//        }
-//        return pos;
-//    }
-
 }

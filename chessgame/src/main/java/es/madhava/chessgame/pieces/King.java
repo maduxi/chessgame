@@ -5,8 +5,8 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -20,10 +20,36 @@ public class King extends ChessPieceAbstract {
         return type;
     }
 
-    public boolean insertable(ArrayList<ChessPiece> tmpFill, int columns) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
+        HashSet<Integer> result = new HashSet<Integer>();
+
+        int col = position % columns;
+        int row = position / columns;
+
+        
+        if (col >0 ) {
+            result.add(position - 1);
+            if (row > 0) {
+                result.add(position - columns - 1);
+                result.add(position - columns);
+            }
+            if (row < rows-1) {
+                result.add(position + columns - 1);
+                result.add(position + columns);
+            }
+        }
+        if (col < columns-1) {
+            result.add(position + 1);
+            if (row > 0) {
+                result.add(position - columns + 1);
+                result.add(position - columns);
+            }
+            if (row < rows-1) {
+                result.add(position + columns + 1);
+                result.add(position + columns);
+            }
+        }
+
+        return result;
     }
-
-
-
 }

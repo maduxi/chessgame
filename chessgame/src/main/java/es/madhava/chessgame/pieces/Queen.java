@@ -5,8 +5,8 @@
  */
 package es.madhava.chessgame.pieces;
 
-import es.madhava.chessgame.GameConfig;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -19,7 +19,8 @@ public class Queen extends ChessPieceAbstract {
     public Character getType() {
         return type;
     }
-    public boolean insertable(ArrayList<ChessPiece> tmpFill, int columns) {
+
+    public Set<Integer> getUnderAttack(int columns, int rows, int position) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
