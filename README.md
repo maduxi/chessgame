@@ -15,7 +15,7 @@ After the compilation has been finished, you will find a new folder called targe
 
 java -cp target/chessgame-1.0-SNAPSHOT.jar es.madhava.chessgame.ChessGame 3 3 2 0 0 1 0
 
-This is the rescription of the required parameters:
+This is the description of the required parameters:
 
 ChessGame {col} {rows} {kings} {queens} {bishops} {rooks} {knights} 
 
