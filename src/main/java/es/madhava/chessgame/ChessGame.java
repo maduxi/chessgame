@@ -36,7 +36,7 @@ public class ChessGame {
         }
     }
 
-    public static ChessPiece[][] getBoardFromList(ArrayList<ChessPiece> pieces, int columns, int rows) {
+    protected static ChessPiece[][] getBoardFromList(ArrayList<ChessPiece> pieces, int columns, int rows) {
         ChessPiece[][] result = new ChessPiece[rows][columns];
         int column;
         int row;

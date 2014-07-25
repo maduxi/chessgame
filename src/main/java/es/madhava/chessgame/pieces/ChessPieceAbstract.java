@@ -37,10 +37,10 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         final int seed = 43;
         return seed * this.getType().hashCode(); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     protected static Set<Integer> getTopRightDiagonalPositions(int columns, int position) {
         int myCol = position % columns;
-        int loops = columns - myCol -1;
+        int loops = columns - myCol - 1;
         int rightAmount = -(columns - 1);
         Set<Integer> pos = loopDiagonalUp(loops, position, rightAmount);
         return pos;
@@ -97,21 +97,21 @@ public abstract class ChessPieceAbstract implements ChessPiece {
         }
         return pos;
     }
-    
+
     protected static Set<Integer> getRow(int columns, int rows, int position) {
         Set<Integer> result = new HashSet<Integer>();
         Point originalPoint = new Point(position, columns, rows);
-        for(int i=0;i<columns;i++){
-            result.add(Point.getPositionFromPoint(new Point(i, originalPoint.getRow()),columns,rows));
+        for (int i = 0; i < columns; i++) {
+            result.add(Point.getPositionFromPoint(new Point(i, originalPoint.getRow()), columns, rows));
         }
         return result;
     }
-    
-        protected static Set<Integer> getColumn(int columns, int rows, int position) {
+
+    protected static Set<Integer> getColumn(int columns, int rows, int position) {
         Set<Integer> result = new HashSet<Integer>();
         Point originalPoint = new Point(position, columns, rows);
-        for(int i=0;i<rows;i++){
-            result.add(Point.getPositionFromPoint(new Point(originalPoint.getColumn(), i),columns,rows));
+        for (int i = 0; i < rows; i++) {
+            result.add(Point.getPositionFromPoint(new Point(originalPoint.getColumn(), i), columns, rows));
         }
         return result;
     }
