@@ -11,22 +11,27 @@ import java.util.Set;
  *
  * @author Madhava Carrillo <madhava.carrillo at gmail.com>
  */
-public class CalculateOptions {
+public class OptionsCalculator {
     
     private static long log= 0;
-    private static long logMargin=5000;
+    private static final long logMargin=5000;
+    private final GameConfig conf;
 
-    static List<ArrayList<ChessPiece>> getOptions(GameConfig conf) {
+    public OptionsCalculator(GameConfig conf) {
+        this.conf = conf;
+    }
+
+    public List<ArrayList<ChessPiece>> getOptions() {
         List<ArrayList<ChessPiece>> result = new ArrayList<ArrayList<ChessPiece>>();
         Set<Integer> toDefend = new HashSet<Integer>();
         Set<Integer> underAttack = new HashSet<Integer>();
-        result.addAll(tryOptions(new ArrayList<ChessPiece>(), conf.getPieces(), toDefend, underAttack, conf.getColumns(), conf.getRows()));
+        result.addAll(getOptionsRecursively(new ArrayList<ChessPiece>(), conf.getPieces(), toDefend, underAttack));
         return result;
     }
 
-    protected static Set<ArrayList<ChessPiece>> tryOptions(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack, int columns, int rows) {
+    protected Set<ArrayList<ChessPiece>> getOptionsRecursively(ArrayList<ChessPiece> fill, ArrayList<ChessPiece> full, Set<Integer> toDefend, Set<Integer> underAttack) {
         Set<ArrayList<ChessPiece>> result = new HashSet<ArrayList<ChessPiece>>();
-        updateStatus();
+        printPointEveryMarginTime();
         if (full.isEmpty()) {
             result.add(fill);
         } else {
@@ -38,10 +43,13 @@ public class CalculateOptions {
             for (int i = 0; i < full.size(); i++) {
                 tmpFull = (ArrayList) full.clone();
                 piece = tmpFull.remove(i);
+                //We don't want to follow the same tree twice
                 if (oldPiece == null || !piece.equals(oldPiece)) {
                     tmpFill = (ArrayList) fill.clone();
+                    //Make sure we can add this piece here
                     if (!underAttack.contains(tmpFill.size()) || piece.isEmpty()) {
-                        uAttack = piece.getAttackSquares(columns, rows, tmpFill.size());
+                        uAttack = piece.getAttackSquares(conf.getColumns(), conf.getRows(), tmpFill.size());
+                        //Make sure this piece won't threat any other so far
                         if (Collections.disjoint(uAttack, toDefend)) {
                             Set<Integer> tDef = new HashSet<Integer>();
                             tDef.addAll(toDefend);
@@ -50,7 +58,7 @@ public class CalculateOptions {
                             }
                             uAttack.addAll(underAttack);
                             tmpFill.add(piece);
-                            result.addAll(tryOptions(tmpFill, tmpFull, tDef, uAttack, columns, rows));
+                            result.addAll(getOptionsRecursively(tmpFill, tmpFull, tDef, uAttack));
                         }
                     }
                     oldPiece = piece;
@@ -60,7 +68,8 @@ public class CalculateOptions {
         return result;
     }
 
-    protected static void updateStatus() {
+    protected static void printPointEveryMarginTime() {
+        
         if(System.currentTimeMillis()-log>logMargin){
             log=System.currentTimeMillis();
             System.out.print(".");

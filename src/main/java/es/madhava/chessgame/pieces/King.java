@@ -1,5 +1,6 @@
 package es.madhava.chessgame.pieces;
 
+import es.madhava.chessgame.Point;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,29 +18,28 @@ public class King extends ChessPieceAbstract {
 
     public Set<Integer> getAttackSquares(int columns, int rows, int position) {
         HashSet<Integer> result = new HashSet<Integer>();
-
-        int col = position % columns;
-        int row = position / columns;
+        
+        Point p = new Point(position, columns, rows);
 
         
-        if (col >0 ) {
+        if (p.getColumn() >0 ) {
             result.add(position - 1);
-            if (row > 0) {
+            if (p.getRow() > 0) {
                 result.add(position - columns - 1);
                 result.add(position - columns);
             }
-            if (row < rows-1) {
+            if (p.getRow() < rows-1) {
                 result.add(position + columns - 1);
                 result.add(position + columns);
             }
         }
-        if (col < columns-1) {
+        if (p.getColumn() < columns-1) {
             result.add(position + 1);
-            if (row > 0) {
+            if (p.getRow() > 0) {
                 result.add(position - columns + 1);
                 result.add(position - columns);
             }
-            if (row < rows-1) {
+            if (p.getRow() < rows-1) {
                 result.add(position + columns + 1);
                 result.add(position + columns);
             }

@@ -29,11 +29,7 @@ public abstract class ChessPieceAbstract implements ChessPiece {
 
     @Override
     public boolean equals(Object object) {
-        if (object != null && object instanceof ChessPieceAbstract && ((ChessPieceAbstract) object).getType().equals(this.getType())) {
-            return true;
-        } else {
-            return false;
-        }
+        return object != null && object instanceof ChessPieceAbstract && ((ChessPieceAbstract) object).getType().equals(this.getType());
     }
 
     @Override

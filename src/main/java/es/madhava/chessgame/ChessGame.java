@@ -20,16 +20,17 @@ public class ChessGame {
 
             conf = new GameConfig(args);
             System.out.println(conf);
-            System.out.println("Calculating");
-            List<ArrayList<ChessPiece>> options = CalculateOptions.getOptions(conf);
+            System.out.println("Processing");
+            OptionsCalculator co = new OptionsCalculator(conf);
+            List<ArrayList<ChessPiece>> options = co.getOptions();
             System.out.println("\nOptions: " + options.size());
             for (ArrayList<ChessPiece> board : options) {
                 printBoard(getBoardFromList(board, conf.getColumns(), conf.getRows()));
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
-            Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, "This program needs 7 integer arguments.", ex);
+            Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, "This program needs 7 integer arguments, ChessGame {col} {rows} {kings} {queens} {bishops} {rooks} {knights} ", ex);
         } catch (NumberFormatException ex) {
-            Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, "This program needs 7 integer arguments.", ex);
+            Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, "This program needs 7 integer arguments, ChessGame {col} {rows} {kings} {queens} {bishops} {rooks} {knights} ", ex);
         } catch (TooManyPiecesException ex) {
             Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, ex.getMessage());
         }
